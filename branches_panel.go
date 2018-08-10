@@ -51,6 +51,15 @@ func handleNewBranch(g *gocui.Gui, v *gocui.View) error {
 	return nil
 }
 
+func handleDelBranch(g *gocui.Gui, v *gocui.View) error {
+	branch := getSelectedBranch(v)
+	return createConfirmationPanel(g, v, "Delete Branch", "Are you sure you want delete this branch?", func(g *gocui.Gui, v *gocui.View) error {
+		if output, err := gitDelBranch(branch.Name); err != nil {
+			createErrorPanel(g, output)
+		}
+		return refreshSidePanels(g)
+	}, nil)
+}
 func handleMerge(g *gocui.Gui, v *gocui.View) error {
 	checkedOutBranch := state.Branches[0]
 	selectedBranch := getSelectedBranch(v)
@@ -76,6 +85,7 @@ func renderBranchesOptions(g *gocui.Gui) error {
 		"m":       "merge",
 		"c":       "checkout by name",
 		"n":       "new branch",
+		"d":       "delete branch",
 		"← → ↑ ↓": "navigate",
 	})
 }
