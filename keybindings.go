@@ -52,6 +52,7 @@ func keybindings(g *gocui.Gui) error {
 		Binding{ViewName: "branches", Key: 'F', Modifier: gocui.ModNone, Handler: handleForceCheckout},
 		Binding{ViewName: "branches", Key: 'n', Modifier: gocui.ModNone, Handler: handleNewBranch},
 		Binding{ViewName: "branches", Key: 'd', Modifier: gocui.ModNone, Handler: handleDelBranch},
+		Binding{ViewName: "branches", Key: 'D', Modifier: gocui.ModNone, Handler: handleForceDelBranch},
 		Binding{ViewName: "branches", Key: 'm', Modifier: gocui.ModNone, Handler: handleMerge},
 		Binding{ViewName: "commits", Key: 's', Modifier: gocui.ModNone, Handler: handleCommitSquashDown},
 		Binding{ViewName: "commits", Key: 'r', Modifier: gocui.ModNone, Handler: handleRenameCommit},

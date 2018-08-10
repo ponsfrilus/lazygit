@@ -510,6 +510,11 @@ func gitNewBranch(name string) (string, error) {
 func gitDelBranch(branch string) (string, error) {
 	return runCommand("git branch -d " + branch)
 }
+
+func gitForceDelBranch(branch string) (string, error) {
+	return runCommand("git branch -D " + branch)
+}
+
 func gitListStash() (string, error) {
 	return runDirectCommand("git stash list")
 }
